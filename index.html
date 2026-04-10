@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="theme-color" content="#2E7D32">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="시니어워크">
+  <meta name="description" content="시니어 특화 하이퍼로컬 일자리 매칭 앱 - 우리 동네 딱 맞는 일자리를 찾아보세요">
+  <meta name="mobile-web-app-capable" content="yes">
 
+  <title>시니어워크 - 동네 일자리 매칭</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-72.png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    /* Initial loading state */
+    .app-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      gap: 16px;
+    }
+    .app-loading__logo {
+      font-size: 72px;
+      animation: bounce 1s ease-in-out infinite;
+    }
+    .app-loading__text {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .app-loading__sub {
+      font-size: 14px;
+      color: var(--color-text-hint);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Loading Screen -->
+    <div class="app-loading" id="app-loading">
+      <div class="app-loading__logo">💼</div>
+      <div class="app-loading__text">시니어워크</div>
+      <div class="app-loading__sub">우리 동네 딱 맞는 일자리</div>
+    </div>
+
+    <!-- Page Content (rendered by router) -->
+    <div id="page-content" style="display: none;"></div>
+
+    <!-- Bottom Tab Bar -->
+    <nav id="tab-bar" class="tab-bar" style="display: none;" aria-label="메인 내비게이션">
+    </nav>
+  </div>
+
+  <!-- App Entry Point -->
+  <script type="module">
+    import './js/app.js';
+
+    // Hide loading, show content after app init
+    window.addEventListener('hashchange', showApp);
+    requestAnimationFrame(() => {
+      setTimeout(showApp, 300);
+    });
+
+    function showApp() {
+      const loading = document.getElementById('app-loading');
+      const content = document.getElementById('page-content');
+      const tabBar = document.getElementById('tab-bar');
+      if (loading) loading.style.display = 'none';
+      if (content) content.style.display = 'block';
+      if (tabBar) tabBar.style.display = 'flex';
+      window.removeEventListener('hashchange', showApp);
+    }
+  </script>
+
+  <!-- Noscript Fallback -->
+  <noscript>
+    <div style="padding: 40px; text-align: center; font-family: sans-serif;">
+      <h1>시니어워크</h1>
+      <p>이 앱은 JavaScript가 필요합니다. 브라우저 설정에서 JavaScript를 활성화해 주세요.</p>
+    </div>
+  </noscript>
+</body>
+</html>

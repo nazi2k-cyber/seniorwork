@@ -1,0 +1,60 @@
+{
+  "name": "시니어워크 - 동네 일자리 매칭",
+  "short_name": "시니어워크",
+  "description": "시니어 특화 하이퍼로컬 일자리 매칭 앱",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2E7D32",
+  "orientation": "portrait",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "assets/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "일자리 검색",
+      "short_name": "검색",
+      "url": "/index.html#/jobs",
+      "icons": [{ "src": "assets/icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "내 프로필",
+      "short_name": "프로필",
+      "url": "/index.html#/profile",
+      "icons": [{ "src": "assets/icons/icon-96.png", "sizes": "96x96" }]
+    }
+  ]
+}
